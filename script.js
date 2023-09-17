@@ -4,6 +4,7 @@ function setVoiceID(id) {
 }
 // Fetch and process the word file
 var words = [];
+var incorrectWords = [];
 
 fetch('words.txt')
     .then(response => response.text())
@@ -26,6 +27,34 @@ let voiceID = 0;
 function getRandomCurrentWordIndex() {
      return Math.floor(Math.random() * words.length);
 }
+
+// Add this variable to keep track of whether the panel is visible or hidden
+let panelVisible = true;
+
+// Function to toggle the incorrect words panel
+function toggleIncorrectWordsPanel() {
+    const wrongWordsPanel = document.getElementById("wrong-words-panel");
+
+    // Toggle the visibility by changing the display property
+    if (panelVisible) {
+        wrongWordsPanel.style.display = "none";
+    } else {
+        wrongWordsPanel.style.display = "block"; // Or "flex", "inline-block", etc., depending on your layout
+    }
+
+    // Update the button text
+    const toggleButton = document.getElementById("toggle-button");
+    toggleButton.textContent = panelVisible ? "Show Incorrect Words" : "Hide Incorrect Words";
+
+    // Update the panel visibility flag
+    panelVisible = !panelVisible;
+}
+
+// Add an event listener to the toggle button
+const toggleButton = document.getElementById("toggle-button");
+toggleButton.addEventListener("click", toggleIncorrectWordsPanel);
+
+
 const synth = window.speechSynthesis;
 function setVoices() {
   return new Promise((resolve, reject) => {
@@ -61,6 +90,7 @@ setVoices().then(voices => {
     }
 
     // Function to check the answer and provide a response
+    // Modify the checkAnswer function
     function checkAnswer() {
         if (currentWordIndex < words.length) {
             const word = words[currentWordIndex];
@@ -68,17 +98,34 @@ setVoices().then(voices => {
             if (userAnswer === word.toLowerCase()) {
                 responseDiv.textContent = "'" + word + "' is correct!";
                 tempIndex = currentWordIndex;
-                while (tempIndex==currentWordIndex) tempIndex = getRandomCurrentWordIndex();
+                while (tempIndex == currentWordIndex) tempIndex = getRandomCurrentWordIndex();
                 currentWordIndex = tempIndex;
-                // console.log("RANDOM: " + currentWordIndex);
                 answerInput.value = "";
+                
+                // Update the wrong words panel
+                updateWrongWordsPanel();
                 speakCurrentWord();
             } else {
                 responseDiv.textContent = "Incorrect. Try again.";
+                // Add the incorrect word and user input to the array
+                incorrectWords.push({ word, userAnswer });
                 speakCurrentWord();
             }
         }
     }
+
+    // Function to update the wrong words panel with the new child as the first item
+    function updateWrongWordsPanel() {
+        const wrongWordsList = document.getElementById("wrong-words-list");
+        for (const item of incorrectWords) {
+            const listItem = document.createElement("li");
+            listItem.textContent = `You entered: "${item.userAnswer}" | Correct word: "${item.word}"`;
+            
+            // Insert the new child as the first item in the list
+            wrongWordsList.insertBefore(listItem, wrongWordsList.firstChild);
+        }
+    }
+
 
     // Event listener for the "Next" button
     const checkButton = document.getElementById("check-button");
