@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelling Bee Training</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <h1>Spelling Bee Training</h1>
+
+    <div id="word-container">
+        <p>Spell the word you hear:</p>
+        <input type="text" id="answer-input" placeholder="Type your answer">
+        <button id="speak-button">Play</button>
+        <button id="check-button">Check</button>
+        <div id="voice-buttons">
+        <button onclick="setVoiceID(0)">US1</button>
+        <button onclick="setVoiceID(1)">US2</button>
+        <button onclick="setVoiceID(2)">US3</button>
+        <button onclick="setVoiceID(7)">UK1</button>
+        <button onclick="setVoiceID(8)">UK2</button>
+        <button onclick="setVoiceID(9)">UK3</button>
+    </div>
+        <div id="response"></div>
+    </div>
+
+    <div id="footer">
+        <p>This application is under CC BY-NC-SA, created by Cheng-You Ho (何承祐, Cyh1368).</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

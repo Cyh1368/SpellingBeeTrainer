@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(45deg, #f0f0f0, #ebfaf5);
+    padding: 20px;
+}
+
+#word-container {
+    margin: 20px;
+}
+
+#response {
+    font-weight: bold;
+    margin-top: 10px;
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+div{
+    padding: 20px 0;
+}
