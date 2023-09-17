@@ -2,7 +2,7 @@
 A javascript app to train the user for spelling bee competitions efficiently.
 
 ## Motivation
-This program was written by Cheng-You Ho for the sake of preparing for the regional English vocabulary competition in Taiwan. The competition format is very similar to that of the Spelling Bee in the US, though the answer is written on paper and there are a lot of questions to be answered. Basically, it's a exam version of the spelling bee.
+This program was written by Cheng-You Ho for the sake of preparing for the regional English vocabulary competition in Taiwan. The competition format is very similar to that of the Spelling Bee in the US, though the answer is written on paper and there are a lot of questions to be answered. Basically, it's an exam version of the National Spelling Bee.
 
 ## How to use
 1. Set up a git folder with `git init`
@@ -11,11 +11,9 @@ This program was written by Cheng-You Ho for the sake of preparing for the regio
 4. Go to `localhost:3000` and start training!
 
 ## Coming features
-1. Display of wrong answers
+1. A panel to display wrong answers
 2. Custom / user-uploaded word bank (`words.txt`)
 3. General purpose word banks, including Wordle, the Oxford Dictionary, 7000 basic vocabularies (Taiwan), ...
 
 ## Authors
-Cheng-You Ho 何承祐
-
-ChatGPT 3.5
+Cheng-You Ho 何承祐 and ChatGPT 3.5
