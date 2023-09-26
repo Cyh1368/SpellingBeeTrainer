@@ -6,7 +6,7 @@ function setVoiceID(id) {
 var words = [];
 var incorrectWords = [];
 
-fetch('words.txt')
+fetch('/wordbank/7000vocab.txt')
     .then(response => response.text())
     .then(data => {
         // Split the text into an array of words using newline as the separator
